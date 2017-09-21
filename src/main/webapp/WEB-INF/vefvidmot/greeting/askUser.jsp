@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-    <title>Hver er notandinn</title>
+    <title>Hver er notandinn !!!! :D</title>
 </head>
 <body>
 
