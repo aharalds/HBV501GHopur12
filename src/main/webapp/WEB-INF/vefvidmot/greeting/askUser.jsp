@@ -6,15 +6,15 @@
 <html lang="en">
 
 <head>
-    <title>Hver er notandinn !!!! :D</title>
+    <title>Hver ert Ã¾Ãº? !!!! :D</title>
 </head>
 <body>
 
 <h1>
 <form method="POST" action="/greeting/hver">
-	Hvað heitir notandinn? 
+	Hvaï¿½ heitir notandinn? 
 	<input name="nafn" type="text" placeholder="Nafn"></input>
-	<input type="submit" value="Áfram" />
+	<input type="submit" value="ï¿½fram" />
 </form>
 </h1>
 
