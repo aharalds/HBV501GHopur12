@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h1>Góğan daginn ${nafn}</h1>
+<h1>Góğan daginn ${userInfo.nafn}</h1>
 
 </body>
 
