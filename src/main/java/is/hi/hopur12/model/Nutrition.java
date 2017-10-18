@@ -10,41 +10,41 @@ import javax.persistence.Table;
 
 @Embeddable
 public class Nutrition {
-	private double protein;
-	private double carbs;
-	private double fat;
+	private int protein;
+	private int carbs;
+	private int fat;
 	
 	public Nutrition() {
 		
 	}
 	
-	public Nutrition(double protein, double carbs, double fat) {
+	public Nutrition(int protein, int carbs, int fat) {
 		this.protein = protein;
 		this.carbs = carbs;
 		this.fat = fat;
 	}
 
-	public double getProtein() {
+	public int getProtein() {
 		return protein;
 	}
 
-	public void setProtein(double protein) {
+	public void setProtein(int protein) {
 		this.protein = protein;
 	}
 
-	public double getCarbs() {
+	public int getCarbs() {
 		return carbs;
 	}
 
-	public void setCarbs(double carbs) {
+	public void setCarbs(int carbs) {
 		this.carbs = carbs;
 	}
 
-	public double getFat() {
+	public int getFat() {
 		return fat;
 	}
 
-	public void setFat(double fat) {
+	public void setFat(int fat) {
 		this.fat = fat;
 	}
 	

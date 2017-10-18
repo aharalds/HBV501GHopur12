@@ -29,32 +29,32 @@ public interface UserService {
 	 * Reiknar æskilegt magn af proteini per dag.
 	 * @bmr er BMR gildi sem fæst úr calcBMR()
 	 */
-	public double calcProtein(double bmr);
+	public int calcProtein(int bmr);
 	
 	/*
 	 * Reiknar æskilegt magn af proteini per dag
 	 * @bmr er BMR gildi sem fæst úr calcBMR()
 	 */
-	public double calcCarbs(double bmr);
+	public int calcCarbs(int bmr);
 	
 	/*
 	 * Reiknar æskilegt magn af fitu per dag
 	 * @bmr er BMR gildi sem fæst úr calcBMR()
 	 */
-	public double calcFat(double bmr);
+	public int calcFat(int bmr);
 	
 	/*
 	 * Býr til nýtt Nutrition object sem er embeddad í User object
 	 * @bmr er BMR gildi sem fæst úr calcBMR()
 	 */
-	public Nutrition calcAll(double bmr);
+	public Nutrition calcAll(int bmr);
 	
 	/*
 	 * Tekur tillit til hreyfingar aðila og finnur endanlegt BMR
 	 * @bmr er BMR gildi sem fæst úr calcBMR()
 	 * @u er user object.
 	 */
-	public void checkWorkout(User u, double bmr);
+	public void checkWorkout(User u, int bmr);
 	
 	
 	

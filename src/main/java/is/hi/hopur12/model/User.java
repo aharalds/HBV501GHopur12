@@ -27,10 +27,10 @@ public class User {
     }
 	
 	private String name;
-	private double age;
-	private double weight;
-	private double height;
-	private double bmr;
+	private int age;
+	private int weight;
+	private int height;
+	private int bmr;
 	private String gender;
 	private String workout;
 	private String goal;
@@ -89,35 +89,35 @@ public class User {
 		return gender;
 	}
 	
-	public double getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(double age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 
-	public double getWeight() {
+	public int getWeight() {
 		return weight;
 	}
 
-	public void setWeight(double weight) {
+	public void setWeight(int weight) {
 		this.weight = weight;
 	}
 
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(int height) {
 		this.height = height;
 	}
 	
-	public double getBmr() {
+	public int getBmr() {
 		return bmr;
 	}
 	
-	public void setBmr(double bmr) {
+	public void setBmr(int bmr) {
 		this.bmr = bmr;
 	}
 

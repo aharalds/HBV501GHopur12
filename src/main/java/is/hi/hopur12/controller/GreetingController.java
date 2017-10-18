@@ -76,5 +76,10 @@ public class GreetingController {
     	return "greeting/userInfo";	
     }
     
+    @RequestMapping(value="/justInfo", method=RequestMethod.POST)
+    public String justInfo(Model model) {
+    	return "greeting/justInfo";
+    }
+    
 }
 
