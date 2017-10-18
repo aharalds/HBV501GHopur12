@@ -13,6 +13,9 @@ public class Nutrition {
 	private int protein;
 	private int carbs;
 	private int fat;
+	private int ppro;
+	private int pcar;
+	private int pfat;
 	
 	public Nutrition() {
 		
@@ -22,6 +25,30 @@ public class Nutrition {
 		this.protein = protein;
 		this.carbs = carbs;
 		this.fat = fat;
+	}
+	
+	public int getPcar() {
+		return pcar;
+	}
+	
+	public void setPcar(int pcar) {
+		this.pcar = pcar;
+	}
+	
+	public int getPfat() {
+		return pfat;
+	}
+	
+	public void setPfat(int pfat) {
+		this.pfat = pfat;
+	}
+	
+	public int getPpro() {
+		return ppro;
+	}
+	
+	public void setPpro(int ppro) {
+		this.ppro = ppro;
 	}
 
 	public int getProtein() {

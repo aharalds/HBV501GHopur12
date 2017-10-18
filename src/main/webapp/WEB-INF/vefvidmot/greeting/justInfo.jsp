@@ -12,7 +12,7 @@
 	<table>
 		<tr>
 			<td>BMR:</td>
-			<td>${bmr }</td>
+			<td>${userInfo.bmr }</td>
 		</tr>
 		<tr>
 			<td>FAT</td>

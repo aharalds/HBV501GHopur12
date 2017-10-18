@@ -10,6 +10,7 @@
 
 package is.hi.hopur12.controller;
 
+import is.hi.hopur12.services.FoodService;
 import is.hi.hopur12.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
+import is.hi.hopur12.model.Food;
 import is.hi.hopur12.model.User;
 
 /*
@@ -29,20 +34,20 @@ import is.hi.hopur12.model.User;
  */
 
 @Controller
+@SessionAttributes("userInfo")
 @RequestMapping("/greeting") // Request Mapping er gerð fyrir klasann til að slóðin byrji á /greeting fyrir allar skipanir 
 public class GreetingController {
 	
 	@Autowired
 	UserService userServ;
-
-    // Þar sem klasinn hefyr slóðina "/greeting", er þessi slóð "/greeting/notandi"
-    // Skilar út .jps skránni "/webapp/WEB-INF/vefvidmot/greeting/showUser.jsp"
-    // með harðkóðuðu attribute-i.
-    @RequestMapping("/notandi")
-    public String notandi (Model model) {
-    	model.addAttribute("nafn", "Atli");
-    	return "greeting/showUser";
-    }
+	
+	@Autowired
+	FoodService foodServ;
+	
+	@ModelAttribute("userInfo")
+	 public User setUpUserForm() {
+		return new User();
+	 }
     
     // Þar sem klasinn hefur slóðina "/greeting", er þessi slóð "/greeting/synaNotanda"
     @RequestMapping("/spyrjaNotanda")
@@ -50,14 +55,9 @@ public class GreetingController {
     	return "greeting/askUser"; // skilar .jsp skrá sem er /webapp/WEB-INF/vefvidmot/greeting/askUser.jsp
     }
     
-    // Þar sem klasinn hefur slóðina "/greeting", er þessi slóð "/greeting/hver"
-    // Skilar .jsp skrá sem er "/webapp/WEB-INF/vefvidmot/greeting/askUser.jsp"
-    // með texta úr "input" glugga.
-    @RequestMapping(value="/hver", method=RequestMethod.POST)
-    public String hver (@RequestParam(value="nafn", required=false)
-    	String nafn, ModelMap model) {
-    	model.addAttribute("nafn", nafn);
-    	return "greeting/showUser";
+    @RequestMapping(value="/justInfo", method=RequestMethod.GET)
+    public String justInfo(@ModelAttribute("userInfo") User u) {
+    	return "greeting/justInfo";
     }
     
     /*
@@ -71,15 +71,16 @@ public class GreetingController {
     	ModelMap model) {
     	userServ.calcBMR(u);
     	u.setNutrition(userServ.calcAll(u.getBmr()));
-    	model.addAttribute("userInfo", u);
     	userServ.save(u);
     	return "greeting/userInfo";	
     }
     
-    @RequestMapping(value="/justInfo", method=RequestMethod.POST)
-    public String justInfo(Model model) {
-    	return "greeting/justInfo";
+    @RequestMapping(value="/foodList", method=RequestMethod.GET)
+    public String foodList(Model model) {
+    	ArrayList<Food> listi;
+    	listi = (ArrayList<Food>) foodServ.allFood();
+    	model.addAttribute("allFood", listi);
+    	return "/greeting/allFood";
     }
-    
 }
 

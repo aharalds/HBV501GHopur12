@@ -6,6 +6,7 @@ import is.hi.hopur12.model.Nutrition;
 import is.hi.hopur12.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 
 /*
  * Service klasi
