@@ -19,5 +19,14 @@ public interface FoodService {
 	
 	public List<Food> allFood();
 	
+	public Food findOne(long id);
+	
+	public Nutrition calcEaten(long id, Nutrition nut);
+	
+	public void calcProtein(Food food, Nutrition nut);
+	public void calcFat(Food food, Nutrition nut);
+	public void calcCarb(Food food, Nutrition nut);
+	public String findtheOne(long ls);
+	
 
 }

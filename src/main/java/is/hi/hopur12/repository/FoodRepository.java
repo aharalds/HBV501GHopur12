@@ -22,4 +22,8 @@ public interface FoodRepository extends JpaRepository<Food,Long> {
 	List<Food> findByName(String name);
 	
 	List<Food> findAllByOrderByIdDesc();
+	
+	@Override
+	Food findOne(Long id);
+	
 }

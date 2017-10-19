@@ -2,6 +2,7 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <html lang="en">
 
@@ -9,30 +10,15 @@
     <title>Food! </title>  
 </head>
 <body>
-    <c:choose>
-        <c:when test="${not empty allFood}">
-            <table class="allFood">
-                <thead>
-                    <tr>
-                        <th>Nafn</th>
-                        <th>Protein</th>
-                        <th>Kolvetni</th>
-                        <th>Fita</th>
-                    </tr>
-                </thead>
-                <c:forEach var ="fooditem" items="${allFood}">
-                    <tr>
-                        <td>${fooditem.name} </td>
-                        <td>${fooditem.protein}</td>
-                        <td>${fooditem.carb}</td>
-                        <td>${fooditem.fat}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:when>
-        <c:otherwise>
-            <h3>NOFOOD!</h3>
-        </c:otherwise>
-    </c:choose>
+	<form method="POST" name="foodVar" action="/greeting/moreInfo">
+	<td>
+	<select name="foodVar">
+    	<c:forEach items="${allFood}" var="foodItem">
+        	<option name="${foodItem.id }" value="${foodItem.id}" ${foodItem.id == selectedRole ? 'selected' : ''}>${foodItem.name}</option>
+    	</c:forEach>
+	</select>
+	</td>
+	<td><input type="submit" value="Velja"/></td>
+	</form>
 </body>
 </html>

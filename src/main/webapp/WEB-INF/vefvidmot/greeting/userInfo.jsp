@@ -49,7 +49,7 @@
 			<form method="POST" action="spyrjaNotanda">
 				<input type="submit" value="Hreinsa" />
 			</form>
-			<form method="GET" action="justInfo">
+			<form method="GET" action="foodList">
 				<input type="submit" value="Áfram">
 			</form>
 		</td>

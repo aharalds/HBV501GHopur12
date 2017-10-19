@@ -12,6 +12,8 @@ package is.hi.hopur12.controller;
 
 import is.hi.hopur12.services.FoodService;
 import is.hi.hopur12.services.UserService;
+import is.hi.hopur12.model.Food;
+import is.hi.hopur12.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +22,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
-
-import is.hi.hopur12.model.Food;
-import is.hi.hopur12.model.User;
 
 /*
  * Control klasi fyrir greetings. Hefur í samskiptum við "/greeting/*.jps" skrár.
@@ -71,7 +73,7 @@ public class GreetingController {
     	ModelMap model) {
     	userServ.calcBMR(u);
     	u.setNutrition(userServ.calcAll(u.getBmr()));
-    	userServ.save(u);
+    	//userServ.save(u);
     	return "greeting/userInfo";	
     }
     
@@ -81,6 +83,15 @@ public class GreetingController {
     	listi = (ArrayList<Food>) foodServ.allFood();
     	model.addAttribute("allFood", listi);
     	return "/greeting/allFood";
+    }
+    
+    @RequestMapping(value="/moreInfo", method=RequestMethod.POST)
+    public String moreInfo(@RequestParam("foodVar") long foodID, @ModelAttribute("userInfo") User u, Model model) {
+    	//System.out.println(foodID);
+    	u.setNutrition(foodServ.calcEaten(foodID,u.getNutrition()));
+    	model.addAttribute("userInfo", u);
+    	//System.out.println(foodServ.findtheOne(foodID));
+    	return "greeting/justInfo";
     }
 }
 

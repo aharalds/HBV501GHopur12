@@ -44,7 +44,7 @@ public class UserServiceImp implements UserService {
 	// BMRs, úr upplýsingum sem fengnar eru.
 	@Override
 	public Nutrition calcAll(int bmr) {
-		Nutrition nut = new Nutrition(calcProtein(bmr),calcCarbs(bmr), calcFat(bmr));
+		Nutrition nut = new Nutrition(calcProtein(bmr),calcCarbs(bmr), calcFat(bmr),0,0,0,0,0,0);
 		return nut;
 		
 	}
