@@ -4,7 +4,7 @@
 * Hópur 12
 * Atli Haraldsson ath174@hi.is
 * Sindri Þór Guðmundsson sthg11@hi.is
-* Jónas Bergsteinsson job33@hi.is
+* Jónas Bergsteinsson job33@hi.is aka þykki
 * Hörn Heiðarsdóttir hoh45@hi.is
 * HBV501G - Hugbúnaðarverkefni 1
 */
