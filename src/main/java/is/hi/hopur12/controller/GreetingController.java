@@ -52,7 +52,7 @@ public class GreetingController {
 		return new User();
 	 }
     
-    // Þar sem klasinn hefur slóðina "/greeting", er þessi slóð "/greeting/synaNotanda"
+    // Þar sem klasinn hefur slóðina "/greeting", er þessi slóð "/greeting/spyrjaNotanda"
     @RequestMapping("/spyrjaNotanda")
     public String spyrjaNotandi () {
     	return "greeting/askUser"; // skilar .jsp skrá sem er /webapp/WEB-INF/vefvidmot/greeting/askUser.jsp
