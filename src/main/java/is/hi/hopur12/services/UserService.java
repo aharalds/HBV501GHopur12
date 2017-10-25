@@ -32,7 +32,7 @@ public interface UserService {
 	public int calcProtein(int bmr);
 	
 	/*
-	 * Reiknar æskilegt magn af proteini per dag
+	 * Reiknar æskilegt magn af kolvetni per dag
 	 * @bmr er BMR gildi sem fæst úr calcBMR()
 	 */
 	public int calcCarbs(int bmr);
