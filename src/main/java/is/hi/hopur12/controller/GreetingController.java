@@ -88,8 +88,11 @@ public class GreetingController {
     @RequestMapping(value="/moreInfo", method=RequestMethod.POST)
     public String moreInfo(@RequestParam("foodVar") long foodID, @ModelAttribute("userInfo") User u, Model model) {
     	//System.out.println(foodID);
+    	ArrayList<Food> listi;
+    	listi = (ArrayList<Food>) foodServ.allFood();
+    	model.addAttribute("allFood", listi);
     	u.setNutrition(foodServ.calcEaten(foodID,u.getNutrition()));
-    	model.addAttribute("userInfo", u);
+    	//model.addAttribute("userInfo", u);
     	//System.out.println(foodServ.findtheOne(foodID));
     	return "greeting/justInfo";
     }

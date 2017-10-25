@@ -41,9 +41,16 @@
 			<td>${userInfo.nutrition.procentProtein }%</td>
 		</tr>
 	</table>
-			<form method="GET" action="foodList">
-				<input type="submit" value="Bæta við">
-			</form>
+	<form method="POST" name="foodVar" action="/greeting/moreInfo">
+	<td>
+	<select name="foodVar">
+    	<c:forEach items="${allFood}" var="foodItem">
+        	<option name="${foodItem.id }" value="${foodItem.id}" ${foodItem.id == selectedRole ? 'selected' : ''}>${foodItem.name}</option>
+    	</c:forEach>
+	</select>
+	</td>
+	<td><input type="submit" value="Velja"/></td>
+	</form>
 </body>
 
 </html>
