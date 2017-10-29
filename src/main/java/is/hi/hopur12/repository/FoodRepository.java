@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
  * Repository fyrir User klasa.
  * Talar við Service klasa.
  */
-public interface FoodRepository extends JpaRepository<Food,Long> {
+public interface FoodRepository extends JpaRepository<Food, Long> {
 	
 	/*
 	 * Vistar gögn í gagnagrunn

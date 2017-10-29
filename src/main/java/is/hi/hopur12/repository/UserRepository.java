@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.Query;
  * Repository fyrir User klasa.
  * Talar við Service klasa.
  */
-public interface UserRepository extends JpaRepository<User,Long> {
+
+public interface UserRepository extends JpaRepository<User, Long> {
 	
 	/*
 	 * Vistar gögn í gagnagrunn
