@@ -3,13 +3,20 @@ package is.hi.hopur12.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+@Entity
+@Table(name = "nutrition")
 @Embeddable
 public class Nutrition {
+	private long nutritionId;
 	private int protein;
 	private int carbs;
 	private int fat;
@@ -35,6 +42,18 @@ public class Nutrition {
 		this.procentCarbs = procentCarbs;
 		this.procentFat = procentFat;
 	}
+	
+    @Id
+    @Column(name = "nutrition_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getNutritionId() {
+    	return this.nutritionId;
+    }
+    
+    public void setNutritionId(long nutritionId) {
+    	this.nutritionId = nutritionId;
+    }
+
 	
 	public int getProcentProtein() {
 		return procentProtein;
@@ -107,7 +126,6 @@ public class Nutrition {
 	public void setFat(int fat) {
 		this.fat = fat;
 	}
-	
 	
 
 }

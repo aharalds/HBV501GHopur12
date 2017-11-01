@@ -2,14 +2,10 @@ package is.hi.hopur12.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,11 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import is.hi.hopur12.model.Nutrition;
 
 @Entity
-@Table (name="aboutUser")
-public class User {
+@Table (name="user_details")
+public class UserDetails {
 
-    private Long user_id;
-	private String name;
+    private Long userdetail_id;
 	private int age;
 	private int weight;
 	private int height;
@@ -30,11 +25,8 @@ public class User {
 	private String gender;
 	private String workout;
 	private String goal;
-	private Nutrition nutrition;
-	//private UserDetails userDetails;
 	
-	public User(String name, int age, int weight, int height, int bmr) {
-		setName(name);
+	public UserDetails(int age, int weight, int height, int bmr) {
 		setAge(age);
 		setWeight(weight);
 		setHeight(height);
@@ -42,40 +34,21 @@ public class User {
 	}
 	
 	@Id
-    @Column(name="user_id")
+    @Column(name="userdetail_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
-        return user_id;
+        return userdetail_id;
     }
 
-    public void setId(Long user_id) {
-        this.user_id = user_id;
+    public void setId(Long userdetail_id) {
+        this.userdetail_id = userdetail_id;
     }
-    /*
-    @OneToOne(cascade = CascadeType.ALL)
-    public UserDetails getUserDetails() {
-    	return userDetails;
-    }
-    
-    public void setUserDetails(UserDetails userDetails) {
-    	this.userDetails = userDetails;
-    }*/
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	public Nutrition getNutrition() {
-		return nutrition;
-	}
-	
-	public void setNutrition(Nutrition nutrition) {
-		this.nutrition = nutrition;
-	}
-	
-
-	
-	public User() {
+	public UserDetails() {
 		
 	}
 
+	
 	public void setWorkout(String workout) {
 		this.workout = workout;
 	}
@@ -90,14 +63,6 @@ public class User {
 	
 	public String getGoal() {
 		return goal;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getName() {
-		return name;
 	}
 	
 	public void setGender(String gender) {
@@ -138,19 +103,5 @@ public class User {
 	
 	public void setBmr(int bmr) {
 		this.bmr = bmr;
-	}
-
-	/*public int getWorkout() {
-		return workout;
-	}
-
-	public void setWorkout(int workout) {
-		this.workout = workout;
-	}*/
-
-	@Override
-	public String toString() {
-		return "age = " + age + ", weight = " + weight + ", height = " + height + ", workout = "
-				;
 	}
 }

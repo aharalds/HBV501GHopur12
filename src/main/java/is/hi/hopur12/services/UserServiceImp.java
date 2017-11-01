@@ -2,7 +2,9 @@ package is.hi.hopur12.services;
 
 import org.springframework.stereotype.Component;
 import is.hi.hopur12.model.User;
+import is.hi.hopur12.model.UserDetails;
 import is.hi.hopur12.model.Nutrition;
+import is.hi.hopur12.repository.NutritionRepository;
 import is.hi.hopur12.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,12 @@ import org.springframework.context.annotation.Scope;
 @Component
 public class UserServiceImp implements UserService {
 	
+    @Autowired
+    NutritionRepository nutRep;
     
 	@Autowired
     UserRepository userRep;
+	
 	Nutrition nutrition;
     
 	//Reiknar æskilegt magn af proteini per dag
@@ -48,6 +53,18 @@ public class UserServiceImp implements UserService {
 		return nut;
 		
 	}
+	
+	@Override
+    public void nutSave(Nutrition nutrition, User u) {
+        u.setNutrition(nutrition);
+        nutRep.save(nutrition);
+       /* if(nutRep.getOne(nutrition.getID()) != null) {
+        	nutRep.update(nutrition);
+        } else {
+           
+        }*/
+        
+    }
 	// Vistar User object í gagnagrunnstöflunni "about_user" með Embedded object Nutrition.
 	@Override
     public User save(User user) {
@@ -72,6 +89,7 @@ public class UserServiceImp implements UserService {
 		
 		checkWorkout(u,bmrx);
 	}
+	
 	
 	// Hendir réttu BMR í objectið user
 	// Með tilliti til hreyfingar og markmiða

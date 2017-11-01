@@ -4,8 +4,7 @@
 * Hópur 12
 * Atli Haraldsson ath174@hi.is
 * Sindri Þór Guðmundsson sthg11@hi.is
-* Jónas Bergsteinsson job33@hi.is aka þykki
-* Hörn Heiðarsdóttir hoh45@hi.is
+* Jónas Bergsteinsson job33@hi.is
 * HBV501G - Hugbúnaðarverkefni 1
 */
 
@@ -52,7 +51,7 @@ public class GreetingController {
 		return new User();
 	 }
     
-    // Þar sem klasinn hefur slóðina "/greeting", er þessi slóð "/greeting/spyrjaNotanda"
+    // Þar sem klasinn hefur slóðina "/greeting", er þessi slóð "/greeting/synaNotanda"
     @RequestMapping("/spyrjaNotanda")
     public String spyrjaNotandi () {
     	return "greeting/askUser"; // skilar .jsp skrá sem er /webapp/WEB-INF/vefvidmot/greeting/askUser.jsp
@@ -74,7 +73,6 @@ public class GreetingController {
     	ModelMap model) {
     	userServ.calcBMR(u);
     	u.setNutrition(userServ.calcAll(u.getBmr()));
-    	//userServ.save(u);
     	return "greeting/userInfo";	
     }
     
@@ -83,19 +81,27 @@ public class GreetingController {
     	ArrayList<Food> listi;
     	listi = (ArrayList<Food>) foodServ.allFood();
     	model.addAttribute("allFood", listi);
-    	return "/greeting/allFood";
+    	return "/greeting/justInfo";
     }
     
     @RequestMapping(value="/moreInfo", method=RequestMethod.POST)
     public String moreInfo(@RequestParam("foodVar") long foodID, @ModelAttribute("userInfo") User u, Model model) {
-    	//System.out.println(foodID);
     	ArrayList<Food> listi;
     	listi = (ArrayList<Food>) foodServ.allFood();
     	model.addAttribute("allFood", listi);
     	u.setNutrition(foodServ.calcEaten(foodID,u.getNutrition()));
-    	//model.addAttribute("userInfo", u);
-    	//System.out.println(foodServ.findtheOne(foodID));
+    	userServ.save(u);
+    	
     	return "greeting/justInfo";
+    }
+    
+    @RequestMapping(value="/showUser", method=RequestMethod.POST)
+    public String showUser(@ModelAttribute("userinfo") User u, Model model) {
+    	//To DB
+    	model.addAttribute("userInfo", u);
+    	userServ.save(u);
+    	//Show end resault
+    	return "/greeting/showUser";
     }
 }
 

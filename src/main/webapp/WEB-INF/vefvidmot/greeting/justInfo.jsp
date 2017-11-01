@@ -51,6 +51,7 @@
 	</td>
 	<td><input type="submit" value="Velja"/></td>
 	</form>
+	<form method="POST" action="showUser"><input type="submit" /></form>
 </body>
 
 </html>
