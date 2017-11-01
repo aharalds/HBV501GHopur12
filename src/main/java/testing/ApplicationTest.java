@@ -32,14 +32,14 @@ public class ApplicationTest {
 	private MockMvc mockMvc;
 	
 	/**
-	 * Aðferð sem athugar hvort virkar að senda HttpRequest á slóðina "/spyrjaNotanda"
-	 * og fá til baka .jsp skrána askUser sem inniheldur strenginn "Nauðsynlegar upplýsingar"
+	 * Aðferð sem athugar hvort virkar að senda HttpRequest á slóðina "/aboutDiet"
+	 * sem vísar yfir á userInfo.jsp sem inniheldur strenginn "Góðan daginn"
 	 */
 	
 	@Test
 	public void shouldReturnDefaultMessage() throws Exception {
-        this.mockMvc.perform(get("/spyrjaNotanda")).andDo(print()).andExpect(status().isOk())
-        .andExpect(content().string(containsString("Nauðsynlegar upplýsingar")));
+        this.mockMvc.perform(get("/aboutDiet")).andDo(print()).andExpect(status().isOk())
+        .andExpect(content().string(containsString("Góðan daginn")));
     }
 	
 }
