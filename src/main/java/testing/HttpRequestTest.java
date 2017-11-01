@@ -32,12 +32,12 @@ public class HttpRequestTest {
 	private TestRestTemplate restTemplate;
 	
 	/**
-	 * Aðferð sem athugar hvort virkar að senda HttpRequest á heimaslóðina
-	 * og fá til baka síðu sem inniheldur
+	 * Aðferð sem athugar hvort virkar að senda HttpRequest á heimaslóðina (/spyrjaNotanda)
+	 * og fá til baka .jsp skrána askUser sem inniheldur strenginn "Nauðsynlegar upplýsingar"
 	 */
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-                String.class)).contains("Hello World");
+                String.class)).contains("Nauðsynlegar upplýsingar");
     }
 }
